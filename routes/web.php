@@ -18,22 +18,17 @@ Route::resource('/productos', 'ProductoController');
 
 Route::get("/kevin", 'ProductoController@insertar');
 Route::get("/", function (Request $request) {
-   /* $user=Auth::user();
-    if($user->esAdmin()){
-        echo "admin";
-    }else{
-        echo "estudiante";
-    }*/
-    $user=Auth::user();
-    $request->session()->put(['nombre'=>$user->name]);
-    session([['email'=>$user->email]]);
+  
+   // $user=Auth::user();
+    //$request->session()->put(['nombre'=>$user->name]);
+    //session([['email'=>$user->email]]);
 
-    return $request->session()->all();
-   // return view('welcome');
+    //return $request->session()->all();
+    return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdministradorController@index');
-
+Route::get('/mail/send', 'MailController@send');
